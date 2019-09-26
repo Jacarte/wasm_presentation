@@ -164,7 +164,7 @@ void EMSCRIPTEN_KEEPALIVE buffer_overread(int start_pos, int end_pos) {
       Module.onRuntimeInitialized = function() {
 
         $("#exploit-btn").click(() => {
-          Module.ccall('buffer_overread', 'None', ['number','number'], [parseInt($("#number1").va()), parseInt($("#number2").va())]);
+          Module.ccall('buffer_overread', 'None', ['number','number'], [parseInt($("#number1").val()), parseInt($("#number2").val())]);
         })
         // var normal = binary.ccall('func_ptr_overwrite2', 'None', ['string', 'string'], ["Bob", "22"]); // Normal behavior
           

