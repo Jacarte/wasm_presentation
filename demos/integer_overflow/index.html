@@ -155,7 +155,6 @@ void EMSCRIPTEN_KEEPALIVE buffer_overread(int start_pos, int end_pos) {
     <script>
 
       console.log = function(...args){
-        $("#wrapper").html("")
         args.forEach(i => {
           $("#wrapper").append(`<p>${i}</p>`)
         })
@@ -164,6 +163,8 @@ void EMSCRIPTEN_KEEPALIVE buffer_overread(int start_pos, int end_pos) {
       Module.onRuntimeInitialized = function() {
 
         $("#exploit-btn").click(() => {
+
+          $("#wrapper").html("")
           Module.ccall('buffer_overread', 'None', ['number','number'], [parseInt($("#number1").val()), parseInt($("#number2").val())]);
         })
         // var normal = binary.ccall('func_ptr_overwrite2', 'None', ['string', 'string'], ["Bob", "22"]); // Normal behavior

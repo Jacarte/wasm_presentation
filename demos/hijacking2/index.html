@@ -217,7 +217,6 @@ void EMSCRIPTEN_KEEPALIVE func_ptr_overwrite2(char *name, char *age) {
     <script>
 
       console.log = function(...args){
-        $("#wrapper").html("")
         args.forEach(i => {
           $("#wrapper").append(`<p>${i}</p>`)
         })
@@ -226,6 +225,8 @@ void EMSCRIPTEN_KEEPALIVE func_ptr_overwrite2(char *name, char *age) {
       Module.onRuntimeInitialized = function() {
 
         $("#exploit-btn").click(() => {
+
+            $("#wrapper").html("")
            Module.ccall('func_ptr_overwrite2', 'None', ['string', 'string'], [$("#name").val(), $("#age").val()]); // Exploit
         })
         // var normal = binary.ccall('func_ptr_overwrite2', 'None', ['string', 'string'], ["Bob", "22"]); // Normal behavior

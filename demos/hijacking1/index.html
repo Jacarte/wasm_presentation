@@ -164,7 +164,6 @@ void EMSCRIPTEN_KEEPALIVE func_ptr_overwrite(char *str) {
     <script>
 
       console.log = function(...args){
-        $("#wrapper").html("")
         args.forEach(i => {
           $("#wrapper").append(`<p>${i}</p>`)
         })
@@ -174,6 +173,7 @@ void EMSCRIPTEN_KEEPALIVE func_ptr_overwrite(char *str) {
 
         $("#exploit-btn").click(() => {            
           
+          $("#wrapper").html("")
           Module.ccall('func_ptr_overwrite', 'None', ['string'], ["AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA6"]);
 
           
