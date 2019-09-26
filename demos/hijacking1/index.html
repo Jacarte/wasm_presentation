@@ -39,7 +39,7 @@
     <div class="exploit">
         <div class="app">
           <div class="trigger">
-            <input id="name" placeholder="string" />
+            <input id="string" placeholder="string" />
             <button id="exploit-btn">TRY !</button>
           </div>
           <hr/>
@@ -174,7 +174,7 @@ void EMSCRIPTEN_KEEPALIVE func_ptr_overwrite(char *str) {
         $("#exploit-btn").click(() => {            
           
           $("#wrapper").html("")
-          Module.ccall('func_ptr_overwrite', 'None', ['string'], ["AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA6"]);
+          Module.ccall('func_ptr_overwrite', 'None', ['string'], [$("#string").val()]);
 
           
         })
